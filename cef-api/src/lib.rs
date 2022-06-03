@@ -1,7 +1,7 @@
 use std::ffi::CString;
 use std::os::raw::{c_char, c_int};
 use std::fs::File;
-use std::io::{Write, BufReader, BufRead, Error};
+use std::io::{write, BufReader, BufRead, Error};
 
 pub use cef::types::{
     list::{List, ValueType},
