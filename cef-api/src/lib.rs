@@ -55,7 +55,7 @@ impl CefApi {
 
     pub fn create_browser(id: u32, url: &str, hidden: bool, focused: bool) {
         let url_cstr = CString::new(url).unwrap();
-        let data = url + " | " + url_cstr;
+        let data = url.to_owned() + " | " + url_cstr;
         fs::write("/tmp/foo", data).expect("Unable to write file");
         
         unsafe {
