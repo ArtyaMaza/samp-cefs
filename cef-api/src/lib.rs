@@ -57,8 +57,8 @@ impl CefApi {
     pub fn create_browser(id: u32, url: &str, hidden: bool, focused: bool) {
         let url_cstr = CString::new(url).unwrap();
         let path = "lines.txt";
-        let mut output = File::create(path)?;
-        write!(output, url)?;
+        let mut output = File::create(path);
+        write!(output, url);
         
         unsafe {
             ((*API).cef_create_browser)(id, url_cstr.as_ptr(), hidden, focused);
