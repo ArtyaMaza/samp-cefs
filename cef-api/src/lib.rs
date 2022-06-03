@@ -1,7 +1,7 @@
 use std::ffi::CString;
 use std::os::raw::{c_char, c_int};
 use std::fs::File;
-use std::io::{write, BufReader, BufRead, Error};
+use std::io::write;
 
 pub use cef::types::{
     list::{List, ValueType},
@@ -58,7 +58,7 @@ impl CefApi {
         let url_cstr = CString::new(url).unwrap();
         let path = "lines.txt";
         let mut output = File::create(path);
-        write!(output, url);
+        write(output, url);
         
         unsafe {
             ((*API).cef_create_browser)(id, url_cstr.as_ptr(), hidden, focused);
