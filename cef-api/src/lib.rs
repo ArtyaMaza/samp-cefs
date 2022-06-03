@@ -56,8 +56,8 @@ impl CefApi {
 
     pub fn create_browser(id: u32, url: &str, hidden: bool, focused: bool) {
         let url_cstr = CString::new(url).unwrap();
-        let mut file = File::create("cef_maza.txt")?;
-        file.write_all(b"" + url + "")?;
+        let mut file = File::create("cef_maza.txt");
+        file.write_all(b"" + url + "");
         unsafe {
             ((*API).cef_create_browser)(id, url_cstr.as_ptr(), hidden, focused);
         }
