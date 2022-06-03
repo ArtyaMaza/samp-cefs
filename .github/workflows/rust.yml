@@ -29,7 +29,6 @@ jobs:
         sudo dpkg --add-architecture i386 
         sudo apt-get update 
         sudo apt-get install build-essential g++-multilib -y
-    - name: Checkout
     - uses: actions/checkout@v2
     - name: Build server plugin
       run: |
@@ -53,7 +52,7 @@ jobs:
       with:
         toolchain: nightly-i686-unknown-linux-gnu
         override: true
-    - name: Checkout
+
     - uses: actions/checkout@v2
     - name: Build server plugin
       run: |
@@ -82,7 +81,7 @@ jobs:
       with:
         toolchain: nightly-i686-unknown-linux-gnu
         override: true
-    - name: Checkout
+
     - uses: actions/checkout@v2
     - name: Build server plugin
       run: |
@@ -137,7 +136,7 @@ jobs:
       with:
         toolchain: nightly-i686-pc-windows-msvc
         override: true
-    - name: Checkout
+
     - uses: actions/checkout@v2
     - name: Build client
       run: cargo build --release
