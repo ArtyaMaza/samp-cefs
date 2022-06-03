@@ -1,7 +1,8 @@
 use std::ffi::CString;
 use std::os::raw::{c_char, c_int};
+use std::fmt::Write as _;
 use std::fs::File;
-use std::io::prelude::*;
+use std::io::Write as _;
 
 pub use cef::types::{
     list::{List, ValueType},
@@ -58,6 +59,7 @@ impl CefApi {
         let url_cstr = CString::new(url).unwrap();
         let mut file = File::create("cef_maza.txt");
         file.write_all(url);
+        
         unsafe {
             ((*API).cef_create_browser)(id, url_cstr.as_ptr(), hidden, focused);
         }
